@@ -6,6 +6,9 @@ urlpatterns = [
     # ex: /races/
     path('', views.index, name='index'),
 
+    # ex: /races/2
+    path('<int:race_id>/', views.detail, name='detail'),
+
 ]
 
 

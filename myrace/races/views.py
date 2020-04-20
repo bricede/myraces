@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Race
 
@@ -8,7 +8,10 @@ def index(request):
     context = {'races_list': races_list}
     return render(request, 'races/index.html', context)
 
-
+# Détails d'une course
+def detail(request, race_id):
+    race = get_object_or_404(Race, pk = race_id)
+    return render(request, 'races/detail.html', {'race': race})
 
 
 

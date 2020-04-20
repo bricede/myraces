@@ -1,0 +1,14 @@
+
+
+{% if races_list %}
+    <ul>
+    {% for race in races_list %}
+   <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
+        <li><p>{{ race }}</p></li>
+    
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No race are available.</p>
+{% endif %}
+

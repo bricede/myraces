@@ -6,28 +6,30 @@ from datetime import date
 # Create your models here.
 class Race(models.Model):
     """A Race"""
-    race_name = models.CharField(max_length = 100)
-    race_date = models.DateField(default=date.today())
-    race_category = models.CharField(max_length = 50)
+    name = models.CharField(max_length = 100)
+    date = models.DateField(default=date.today())
+    category = models.CharField(max_length = 50)
     
-    class race_category(models.TextChoices):
+    class category(models.TextChoices):
         TRAIL = 'TR', _('Trail')
         ULTRA = 'UL', _('Ultra')
         MARATHON = 'MA', _('Marathon')
         SEMI = 'SE', _('Semi')
         AUTRE = 'AU', _('Autre')
     
-    race_category = models.CharField(
+    category = models.CharField(
         max_length=2,
-        choices=race_category.choices,
-        default=race_category.TRAIL,
+        choices = category.choices,
+        default = category.TRAIL,
     )
+    def __str__(self):
+        return self.choices
 
-    race_distance = models.SmallIntegerField()
-    race_deniv = models.SmallIntegerField()
-    race_time = models.CharField(max_length = 8)
+    distance = models.SmallIntegerField()
+    deniv = models.SmallIntegerField()
+    time = models.CharField(max_length = 8)
     date_added = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
         """Returne a string representation of the model"""
-        return self.race_name
+        return self.name

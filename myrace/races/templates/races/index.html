@@ -2,14 +2,6 @@
 
 {% block content %}
 
-{% if races_list %}
-    <ul>
-    {% for race in races_list %}
-        <li><a href="/races/{{ race.id }}/">{{ race }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No race are available.</p>
-{% endif %}
+    <h1>Welcome to my races tracking app</h1>
 
 {% endblock content %}

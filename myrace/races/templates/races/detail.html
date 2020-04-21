@@ -1,3 +1,7 @@
+{% extends "races/base.html" %}
+
+{% block content %}
+
 <h1>{{ race.name }}</h1>
 
 {% if error_message %}
@@ -11,4 +15,4 @@
 <p>Temps : {{ race.time }}</p>
 <p></p>
 
-<a href="/races">Liste des courses</a>
+{% endblock content %}

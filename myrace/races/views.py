@@ -1,14 +1,17 @@
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.decorators import login_required
 
 from .models import Race
 
 # Liste des courses
+@login_required
 def index(request):
     races_list = Race.objects.order_by('-date')
     context = {'races_list': races_list}
     return render(request, 'races/index.html', context)
 
 # Détails d'une course
+@login_required
 def detail(request, race_id):
     race = get_object_or_404(Race, pk = race_id)
     return render(request, 'races/detail.html', {'race': race})

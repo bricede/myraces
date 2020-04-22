@@ -1,0 +1,18 @@
+{% extends "races/base.html" %}
+
+{% block content %}
+
+<h1>{{ race.name }}</h1>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<p>Date : {{ race.date }}</p>
+<p>Catégorie : {{ race.category }}</p>
+<p>Distance : {{ race.distance }}</p>
+<p>Dénivelé : {{ race.deniv }}</p>
+<p>Temps : {{ race.time }}</p>
+<p></p>
+
+{% endblock content %}

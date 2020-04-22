@@ -1,18 +1,24 @@
 {% extends "races/base.html" %}
 
+{% block page_header %}
+  <h1>{{ race.name }}</h1>
+{% endblock page_header %}
+
 {% block content %}
 
-<h1>{{ race.name }}</h1>
-
-{% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
-{% endif %}
-
-<p>Date : {{ race.date }}</p>
-<p>Catégorie : {{ race.category }}</p>
-<p>Distance : {{ race.distance }}</p>
-<p>Dénivelé : {{ race.deniv }}</p>
-<p>Temps : {{ race.time }}</p>
-<p></p>
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        {{ race.date|date:'d M Y' }}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Distance : {{ race.distance }} km</li>
+        <li class="list-group-item">Dénivelé : {{ race.deniv }} m</li>
+        <li class="list-group-item">Temps : {{ race.time }}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">mettre à jour</a>
+    </div>
+  </div>
 
 {% endblock content %}
+

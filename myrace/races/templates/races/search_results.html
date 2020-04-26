@@ -1,0 +1,35 @@
+<!-- templates/search_results.html -->
+
+{% extends "races/base.html" %}
+
+{% block page_header %}
+  <h1>Recherche de course</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'races:search_results' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">Search</button>
+</form>
+
+<!-- <ul>
+  {% for race in queryset %}
+    <li>
+      {{ race.name }}
+    </li>
+  {% endfor %}
+</ul> -->
+
+{% if queryset %}
+    <ul>
+    {% for race in queryset %}
+        <li><a href="/races/{{ race.id }}/">{{ race }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No race are available.</p>
+{% endif %}
+
+{% endblock content %}

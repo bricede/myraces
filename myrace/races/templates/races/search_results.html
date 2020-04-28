@@ -14,14 +14,6 @@
   <button name="submit">Search</button>
 </form>
 
-<!-- <ul>
-  {% for race in queryset %}
-    <li>
-      {{ race.name }}
-    </li>
-  {% endfor %}
-</ul> -->
-
 {% if queryset %}
     <ul>
     {% for race in queryset %}
@@ -29,7 +21,7 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No race are available.</p>
+    <p>No race available.</p>
 {% endif %}
 
 {% endblock content %}

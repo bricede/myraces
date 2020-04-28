@@ -20,6 +20,7 @@ def detail(request, race_id):
     return render(request, 'races/detail.html', {'race': race})
 
 # Recherche d'une course
+@login_required
 def search_results(request):
     if request.method != 'POST':
         # No data submitted, create a blank form

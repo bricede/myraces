@@ -8,7 +8,7 @@ class Race(models.Model):
     """A Race"""
     name = models.CharField(max_length = 100)
     date = models.DateField(default=date.today())
-    category = models.CharField(max_length = 50)
+    category = models.CharField(max_length = 50) #required=False
     
     class category(models.TextChoices):
         TRAIL = 'TR', _('Trail')

@@ -1,35 +1,37 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import gettext_lazy as _
 from datetime import date
 
 # Create your models here.
+
+class Category(models.Model):
+    """Catégorie de courses : trail, ultra, marathon, semi, autre... """
+    text = models.CharField(max_length = 50, null = True)
+    
+    def __str__(self):
+        return self.text
+
+class Runner(models.Model):
+    """liste des courreurs"""
+    firstname = models.CharField(max_length = 50)
+    lastname = models.CharField(max_length = 50)
+    dateofbirth = models.DateField()
+    
+    def __str__(self):
+        return self.firstname
+
 class Race(models.Model):
     """A Race"""
     name = models.CharField(max_length = 100)
     date = models.DateField(default=date.today())
-    category = models.CharField(max_length = 50) #required=False
-    
-    class category(models.TextChoices):
-        TRAIL = 'TR', _('Trail')
-        ULTRA = 'UL', _('Ultra')
-        MARATHON = 'MA', _('Marathon')
-        SEMI = 'SE', _('Semi')
-        AUTRE = 'AU', _('Autre')
-    
-    category = models.CharField(
-        max_length=2,
-        choices = category.choices,
-        default = category.TRAIL,
-    )
-    def __str__(self):
-        return self.choices
-
-    distance = models.SmallIntegerField()
-    deniv = models.SmallIntegerField()
-    time = models.CharField(max_length = 8)
+    category = models.ForeignKey(Category, on_delete = models.SET_NULL, null = True)
+    runner = models.ForeignKey(Runner, on_delete = models.CASCADE)
+    distance = models.PositiveSmallIntegerField(null = True)
+    deniv = models.PositiveSmallIntegerField(null = True)
+    time = models.CharField(max_length = 8, null = True)
     date_added = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
         """Returne a string representation of the model"""
         return self.name
+

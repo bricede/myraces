@@ -1,7 +1,7 @@
 {% extends "races/base.html" %}
 
 {% block page_header %}
-  <h1>{{ race.name }}</h1>
+  <h1>{{ race.name }} - {{ race.runner }}</h1>
 {% endblock page_header %}
 
 {% block content %}
@@ -11,6 +11,7 @@
         Date : {{ race.date|date:'d M Y' }}
     </div>
     <ul class="list-group list-group-flush">
+      <li class="list-group-item">Categorie : {{ race.category }}</li>
         <li class="list-group-item">Distance : {{ race.distance }} km</li>
         <li class="list-group-item">Dénivelé : {{ race.deniv }} m</li>
         <li class="list-group-item">Temps : {{ race.time }}</li>

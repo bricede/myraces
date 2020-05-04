@@ -29,7 +29,6 @@ class Race(models.Model):
     distance = models.PositiveSmallIntegerField(null = True)
     deniv = models.PositiveSmallIntegerField(null = True)
     time = models.CharField(max_length = 8, null = True)
-    date_added = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
         """Returne a string representation of the model"""
